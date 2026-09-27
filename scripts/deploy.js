@@ -10,13 +10,14 @@ async function main() {
   // wallet address before deploying to Sepolia.
   // Must NOT be the same address as the deployer.
   // ──────────────────────────────────────────────
-  const FACULTY_ADVISOR_ADDRESS = process.env.FACULTY_ADVISOR_ADDRESS;
+const signers = await ethers.getSigners();
+const FACULTY_ADVISOR_ADDRESS = signers[1].address;
 
-  if (!FACULTY_ADVISOR_ADDRESS) {
-    throw new Error(
-      "FACULTY_ADVISOR_ADDRESS is not set. Add it to your .env file before deploying."
-    );
-  }
+//   if (!FACULTY_ADVISOR_ADDRESS) {
+//     throw new Error(
+//       "FACULTY_ADVISOR_ADDRESS is not set. Add it to your .env file before deploying."
+//     );
+//   }
 
   console.log("Deploying ClubDAO...");
   console.log("President (deployer):", deployer.address);
