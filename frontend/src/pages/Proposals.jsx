@@ -156,8 +156,13 @@ function Proposals({ wallet }) {
 
   return (
     <div className="page proposals-page">
-      <TransactionToast toasts={toasts} onDismiss={dismissToast} />
+    <TransactionToast toasts={toasts} onDismiss={dismissToast} />
+    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
       <h2>Proposals</h2>
+      <button className="btn btn-secondary" onClick={refreshProposals}>
+        Refresh
+      </button>
+    </div>
 
       {(role === ROLES.PRESIDENT || role === ROLES.MEMBER) && (
         <div className="card">

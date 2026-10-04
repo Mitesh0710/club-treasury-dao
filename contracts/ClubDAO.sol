@@ -146,7 +146,7 @@ contract ClubDAO {
     ) external onlyMember {
         require(_amount > 0 && _amount <= address(this).balance, "Invalid amount");
         require(_recipient != address(0), "Invalid recipient");
-        require(_votingDurationSeconds >= 3600, "Voting duration too short");
+        require(_votingDurationSeconds >= 60, "Voting duration too short");
 
         uint256 newProposalId = proposalCount;
         uint256 deadline = block.timestamp + _votingDurationSeconds;
