@@ -61,11 +61,16 @@ export function useWallet() {
   useEffect(() => {
     if (typeof window.ethereum === "undefined") return;
 
-    const handleAccountsChanged = (accounts) => {
+    const handleAccountsChanged = async (accounts) => {
       if (accounts.length === 0) {
         disconnectWallet();
       } else {
         setAccount(accounts[0]);
+        // Refresh signer to match the newly active account
+        const browserProvider = new ethers.BrowserProvider(window.ethereum);
+        const newSigner = await browserProvider.getSigner();
+        setProvider(browserProvider);
+        setSigner(newSigner);
       }
     };
 
